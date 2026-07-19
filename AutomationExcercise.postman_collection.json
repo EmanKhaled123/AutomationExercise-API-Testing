@@ -1,0 +1,903 @@
+{
+  "info": {
+    "_postman_id": "35095203-ff14-4c76-8c3f-018e39ea357a",
+    "name": "AutomationExcercise",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "55705316",
+    "_collection_link": "https://go.postman.co/collection/55705316-35095203-ff14-4c76-8c3f-018e39ea357a?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "Get All Products List",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {\r",
+              "    pm.response.to.have.status(200);\r",
+              "});\r",
+              "\r",
+              "pm.test(\"Products List is not Empty\", function () {\r",
+              "     const json= pm.response.json();\r",
+              "    pm.expect(json.products.length).to.be.greaterThan(0);\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "https://automationexercise.com/api/productsList",
+          "protocol": "https",
+          "host": [
+            "automationexercise",
+            "com"
+          ],
+          "path": [
+            "api",
+            "productsList"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Post to All Products List",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"HTTP status code is 200\", function () {\r",
+              "    pm.response.to.have.status(200);\r",
+              "});\r",
+              "\r",
+              "pm.test(\"Response code in body is 405\", function () {\r",
+              "    const json = pm.response.json();\r",
+              "    pm.expect(json.responseCode).to.eql(405);\r",
+              "});\r",
+              "\r",
+              "pm.test(\"Response message is 'This request method is not supported.'\", function () {\r",
+              "    pm.expect(pm.response.text()).to.include(\"This request method is not supported.\");\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [],
+        "url": {
+          "raw": "https://automationexercise.com/api/productsList",
+          "protocol": "https",
+          "host": [
+            "automationexercise",
+            "com"
+          ],
+          "path": [
+            "api",
+            "productsList"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get All Brands List",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {\r",
+              "    pm.response.to.have.status(200);\r",
+              "});\r",
+              "\r",
+              "pm.test(\"Brands List is not Empty\", function () {\r",
+              "     const json= pm.response.json();\r",
+              "    pm.expect(json.brands.length).to.be.above(0);\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "https://automationexercise.com/api/brandsList",
+          "protocol": "https",
+          "host": [
+            "automationexercise",
+            "com"
+          ],
+          "path": [
+            "api",
+            "brandsList"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Put to All Brands List",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {\r",
+              "    pm.response.to.have.status(200);\r",
+              "});\r",
+              "\r",
+              "pm.test(\"Status code is 405\", function () {\r",
+              "    const json= pm.response.json();\r",
+              "    pm.expect(json.responseCode).to.equal(405);\r",
+              "});\r",
+              "pm.test(\"Response message is 'This request method is not supported.'\", function () {\r",
+              "    pm.expect(pm.response.text()).to.include(\"This request method is not supported.\");\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "PUT",
+        "header": [],
+        "url": {
+          "raw": "https://automationexercise.com/api/brandsList",
+          "protocol": "https",
+          "host": [
+            "automationexercise",
+            "com"
+          ],
+          "path": [
+            "api",
+            "brandsList"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Post to Search Product",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {\r",
+              "    pm.response.to.have.status(200);\r",
+              "});\r",
+              "pm.test(\"Products List is not Empty\", function () {\r",
+              "     const json= pm.response.json();\r",
+              "    pm.expect(json.products.length).to.be.greaterThan(0);\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            {
+              "key": "search_product",
+              "value": "tshirt",
+              "type": "text",
+              "uuid": "33225f2e-6a4b-4ced-9e45-845026e2ce1a"
+            }
+          ]
+        },
+        "url": {
+          "raw": "https://automationexercise.com/api/searchProduct",
+          "protocol": "https",
+          "host": [
+            "automationexercise",
+            "com"
+          ],
+          "path": [
+            "api",
+            "searchProduct"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Post to Search Product Without Parameter",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {\r",
+              "    pm.response.to.have.status(200);\r",
+              "});\r",
+              "\r",
+              "pm.test(\"Response Code is 400\", function(){\r",
+              "    pm.expect(pm.response.json().responseCode).to.eql(400);\r",
+              "});\r",
+              "\r",
+              "pm.test(\"Response message is 'Bad Request'\", function () {\r",
+              "    pm.expect(pm.response.text()).to.include(\"Bad request, search_product parameter is missing in POST request.\");\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [],
+        "url": {
+          "raw": "https://automationexercise.com/api/searchProduct",
+          "protocol": "https",
+          "host": [
+            "automationexercise",
+            "com"
+          ],
+          "path": [
+            "api",
+            "searchProduct"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Post to Verify Login With Valid Details",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {\r",
+              "    pm.response.to.have.status(200);\r",
+              "});\r",
+              "pm.test(\"Response message is 'User exists!'\", function () {\r",
+              "    pm.expect(pm.response.json().message).to.eql(\"User exists!\");\r",
+              "});\r",
+              ""
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            {
+              "key": "email",
+              "value": "emankhaled4776@gmail.com",
+              "type": "text",
+              "uuid": "1ded50aa-7453-4266-887e-c2fe56e1f361"
+            },
+            {
+              "key": "password",
+              "value": "eman123456789",
+              "type": "text",
+              "uuid": "67c6db86-fc55-43dd-9961-1395e46bfd89"
+            }
+          ]
+        },
+        "url": {
+          "raw": "https://automationexercise.com/api/verifyLogin",
+          "protocol": "https",
+          "host": [
+            "automationexercise",
+            "com"
+          ],
+          "path": [
+            "api",
+            "verifyLogin"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Post to Verify Login Without Email",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"HTTP status code is 200\", function () {\r",
+              "    pm.response.to.have.status(200);\r",
+              "});\r",
+              "\r",
+              "pm.test(\"Response code in body is 400\", function () {\r",
+              "    const json = pm.response.json();\r",
+              "    pm.expect(json.responseCode).to.eql(400);\r",
+              "});\r",
+              "\r",
+              "pm.test(\"Error message confirms missing parameter\", function () {\r",
+              "    const json = pm.response.json();\r",
+              "    pm.expect(json.message).to.include(\"Bad request, email or password parameter is missing in POST request.\");\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            {
+              "key": "password",
+              "value": "eman123456789",
+              "type": "text",
+              "uuid": "7c9ac87d-d71f-4638-8037-e5361e7ccb07"
+            }
+          ]
+        },
+        "url": {
+          "raw": "https://automationexercise.com/api/verifyLogin?",
+          "protocol": "https",
+          "host": [
+            "automationexercise",
+            "com"
+          ],
+          "path": [
+            "api",
+            "verifyLogin"
+          ],
+          "query": [
+            {
+              "key": "",
+              "value": null
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Delete the Verified Login",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {\r",
+              "    pm.response.to.have.status(200);\r",
+              "});\r",
+              "\r",
+              "pm.test(\"Response Code is 405\", function () {\r",
+              "    const json= pm.response.json();\r",
+              "    pm.expect(json.responseCode).to.equal(405);\r",
+              "});\r",
+              "\r",
+              "pm.test(\"Response Message This request method is not supported.\", function () {\r",
+              "    pm.expect(pm.response.text()).to.include(\"This request method is not supported.\")\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "https://automationexercise.com/api/verifyLogin",
+          "protocol": "https",
+          "host": [
+            "automationexercise",
+            "com"
+          ],
+          "path": [
+            "api",
+            "verifyLogin"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Post to Verify Login With Invalid Details",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status Code is 200\", function(){\r",
+              "    pm.response.to.have.status(200);\r",
+              "});\r",
+              "\r",
+              "pm.test(\"Response Code is 404\", function(){\r",
+              "    const json= pm.response.json();\r",
+              "    pm.expect(json.responseCode).to.eql(404);\r",
+              "});\r",
+              "\r",
+              "pm.test(\"Response Message is 'User not found'\", function(){\r",
+              "    pm.expect(pm.response.text()).to.include(\"User not found!\");\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            {
+              "key": "email",
+              "value": "eman1234@gmail.com",
+              "type": "text",
+              "uuid": "23282ec9-698f-4975-a8d5-6fb3739c87ca"
+            },
+            {
+              "key": "password",
+              "value": "eman123456789",
+              "type": "text",
+              "uuid": "2a4831c9-8f28-43af-9495-96b6c4265e01"
+            }
+          ]
+        },
+        "url": {
+          "raw": "https://automationexercise.com/api/verifyLogin",
+          "protocol": "https",
+          "host": [
+            "automationexercise",
+            "com"
+          ],
+          "path": [
+            "api",
+            "verifyLogin"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Post to Register User Account",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status Code is 200\", function(){\r",
+              "    pm.response.to.have.status(200);\r",
+              "});\r",
+              "\r",
+              "pm.test(\"Response Code is 201\", function(){\r",
+              "    const json= pm.response.json();\r",
+              "    pm.expect(json.responseCode).to.eql(201);\r",
+              "});\r",
+              "\r",
+              "pm.test(\"User Created Successfully\", function(){\r",
+              "   pm.expect(pm.response.text()).to.include(\"User created!\");\r",
+              "});\r",
+              ""
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            {
+              "key": "name",
+              "value": "Eman Selim",
+              "type": "text",
+              "uuid": "38a3e858-1572-4bdb-8d22-a924deadd1ab"
+            },
+            {
+              "key": "email",
+              "value": "ek921282@gmail.com",
+              "type": "text",
+              "uuid": "fb66aa89-4e5c-4ee6-80bd-ae3fea81ec98"
+            },
+            {
+              "key": "password",
+              "value": "eman123456789",
+              "type": "text",
+              "uuid": "47a06609-6d24-4f2e-a495-5a4013fc1b35"
+            },
+            {
+              "key": "title ",
+              "value": "Miss",
+              "type": "text",
+              "uuid": "39a86904-c4c8-4400-83ba-d6df28d06c62"
+            },
+            {
+              "key": "birth_date",
+              "value": "15",
+              "type": "text",
+              "uuid": "1774cdee-3354-484b-a511-487875593339"
+            },
+            {
+              "key": "birth_month",
+              "value": "4",
+              "type": "text",
+              "uuid": "9adfca6a-e374-49a3-9b6d-440c267fa652"
+            },
+            {
+              "key": "birth_year",
+              "value": "2003",
+              "type": "text",
+              "uuid": "009640ee-46ec-456d-a321-762ade9cece1"
+            },
+            {
+              "key": "firstname",
+              "value": "Eman",
+              "type": "text",
+              "uuid": "a1e73c76-598d-4ab6-9eca-37bf0334bec7"
+            },
+            {
+              "key": "lastname",
+              "value": "Selim",
+              "type": "text",
+              "uuid": "6821c754-1054-4d31-beb5-a784e69f99ba"
+            },
+            {
+              "key": "company",
+              "value": "Company Test",
+              "type": "text",
+              "uuid": "c06b3677-53b9-4cca-a5fc-8c02037954b6"
+            },
+            {
+              "key": "address1",
+              "value": "Zahraa El Maadi",
+              "type": "text",
+              "uuid": "d9052c80-199c-47de-a867-cab43f9028a9"
+            },
+            {
+              "key": "address2",
+              "value": "N/A",
+              "type": "text",
+              "uuid": "cf466617-4e38-4b47-a3a5-379e9aa4466c"
+            },
+            {
+              "key": "country",
+              "value": "Egypt",
+              "type": "text",
+              "uuid": "f3c2738e-a037-4bb0-a0e9-d7bfaa647ff9"
+            },
+            {
+              "key": "zipcode",
+              "value": "N/A",
+              "type": "text",
+              "uuid": "ab4a3a09-4a17-41c8-82bf-2fe4d400d24a"
+            },
+            {
+              "key": "state",
+              "value": "N/A",
+              "type": "text",
+              "uuid": "2457f345-42c0-4f08-930f-997050469693"
+            },
+            {
+              "key": "city",
+              "value": "Cairo",
+              "type": "text",
+              "uuid": "df67dd06-7b53-4bd6-a4f6-a4d6f80a4a59"
+            },
+            {
+              "key": "mobile_number",
+              "value": "01152555892",
+              "type": "text",
+              "uuid": "2224ae15-999c-4d5d-a00d-7fc3f466a7a4"
+            }
+          ]
+        },
+        "url": {
+          "raw": "https://automationexercise.com/api/createAccount",
+          "protocol": "https",
+          "host": [
+            "automationexercise",
+            "com"
+          ],
+          "path": [
+            "api",
+            "createAccount"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Delete User Account",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {\r",
+              "    pm.response.to.have.status(200);\r",
+              "});\r",
+              "\r",
+              "pm.test(\"Response body contains'Account deleted'\", function () {\r",
+              "    pm.expect(pm.response.text()).to.include('Account deleted');\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            {
+              "key": "email",
+              "value": "ek921282@gmail.com",
+              "type": "text",
+              "uuid": "ddb447c5-f272-4088-9bc1-ce475d8e3507"
+            },
+            {
+              "key": "password",
+              "value": "eman123456789",
+              "type": "text",
+              "uuid": "124e0cd8-88a0-44af-b9a3-b7c515226bb2"
+            }
+          ]
+        },
+        "url": {
+          "raw": "https://automationexercise.com/api/deleteAccount",
+          "protocol": "https",
+          "host": [
+            "automationexercise",
+            "com"
+          ],
+          "path": [
+            "api",
+            "deleteAccount"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Put to Update User Account",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status Code is 200\", function(){\r",
+              "    pm.response.to.have.status(200);\r",
+              "});\r",
+              "\r",
+              "pm.test(\"User Updated\", function(){\r",
+              "   pm.expect(pm.response.text()).to.include(\"User updated!\");\r",
+              "});\r",
+              ""
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "PUT",
+        "header": [],
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            {
+              "key": "name",
+              "value": "Eman Selim",
+              "type": "text",
+              "uuid": "38a3e858-1572-4bdb-8d22-a924deadd1ab"
+            },
+            {
+              "key": "email",
+              "value": "emankhaled4776@gmail.com",
+              "type": "text",
+              "uuid": "fb66aa89-4e5c-4ee6-80bd-ae3fea81ec98"
+            },
+            {
+              "key": "password",
+              "value": "eman123456789",
+              "type": "text",
+              "uuid": "47a06609-6d24-4f2e-a495-5a4013fc1b35"
+            },
+            {
+              "key": "title ",
+              "value": "Miss",
+              "type": "text",
+              "uuid": "39a86904-c4c8-4400-83ba-d6df28d06c62"
+            },
+            {
+              "key": "birth_date",
+              "value": "15",
+              "type": "text",
+              "uuid": "1774cdee-3354-484b-a511-487875593339"
+            },
+            {
+              "key": "birth_month",
+              "value": "4",
+              "type": "text",
+              "uuid": "9adfca6a-e374-49a3-9b6d-440c267fa652"
+            },
+            {
+              "key": "birth_year",
+              "value": "2003",
+              "type": "text",
+              "uuid": "009640ee-46ec-456d-a321-762ade9cece1"
+            },
+            {
+              "key": "firstname",
+              "value": "Eman",
+              "type": "text",
+              "uuid": "a1e73c76-598d-4ab6-9eca-37bf0334bec7"
+            },
+            {
+              "key": "lastname",
+              "value": "Selim",
+              "type": "text",
+              "uuid": "6821c754-1054-4d31-beb5-a784e69f99ba"
+            },
+            {
+              "key": "company",
+              "value": "Company Test",
+              "type": "text",
+              "uuid": "c06b3677-53b9-4cca-a5fc-8c02037954b6"
+            },
+            {
+              "key": "address1",
+              "value": "Zahraa El Maadi",
+              "type": "text",
+              "uuid": "d9052c80-199c-47de-a867-cab43f9028a9"
+            },
+            {
+              "key": "address2",
+              "value": "N/A",
+              "type": "text",
+              "uuid": "cf466617-4e38-4b47-a3a5-379e9aa4466c"
+            },
+            {
+              "key": "country",
+              "value": "Egypt",
+              "type": "text",
+              "uuid": "f3c2738e-a037-4bb0-a0e9-d7bfaa647ff9"
+            },
+            {
+              "key": "zipcode",
+              "value": "N/A",
+              "type": "text",
+              "uuid": "ab4a3a09-4a17-41c8-82bf-2fe4d400d24a"
+            },
+            {
+              "key": "state",
+              "value": "N/A",
+              "type": "text",
+              "uuid": "2457f345-42c0-4f08-930f-997050469693"
+            },
+            {
+              "key": "city",
+              "value": "Cairo",
+              "type": "text",
+              "uuid": "df67dd06-7b53-4bd6-a4f6-a4d6f80a4a59"
+            },
+            {
+              "key": "mobile_number",
+              "value": "01152555892",
+              "type": "text",
+              "uuid": "2224ae15-999c-4d5d-a00d-7fc3f466a7a4"
+            }
+          ]
+        },
+        "url": {
+          "raw": "https://automationexercise.com/api/updateAccount",
+          "protocol": "https",
+          "host": [
+            "automationexercise",
+            "com"
+          ],
+          "path": [
+            "api",
+            "updateAccount"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get User Details by Mail",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {\r",
+              "    pm.response.to.have.status(200);\r",
+              "});\r",
+              "\r",
+              "pm.test(\"User Details List is not Empty\", function () {\r",
+              "    const json= pm.response.json();\r",
+              "    // console.log(json);\r",
+              "    pm.expect(json.user).to.exist;\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "formdata",
+          "formdata": []
+        },
+        "url": {
+          "raw": "https://automationexercise.com/api/getUserDetailByEmail?email=emankhaled4776@gmail.com",
+          "protocol": "https",
+          "host": [
+            "automationexercise",
+            "com"
+          ],
+          "path": [
+            "api",
+            "getUserDetailByEmail"
+          ],
+          "query": [
+            {
+              "key": "email",
+              "value": "emankhaled4776@gmail.com"
+            }
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}
